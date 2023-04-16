@@ -14,7 +14,7 @@ if (!defined('KR_READY')) {
 }
 
 include_once __DIR__ . '/timetest.php';
-    class VerbrauchZeitspanne extends IPSModule
+    class BB_Verbrauchsberechnung extends IPSModule
     {
         //Using an own time() function in order to use custom time while testing
         use TestTime;
@@ -31,7 +31,7 @@ include_once __DIR__ . '/timetest.php';
             $this->RegisterPropertyInteger('Interval', 10);
 
             //Timer
-            $this->RegisterTimer('UpdateTimer', 0, 'VIZ_Calculate($_IPS[\'TARGET\']);');
+            $this->RegisterTimer('UpdateTimer', 0, 'VBR_Calculate($_IPS[\'TARGET\']);');
 
             //Messages
             $this->RegisterMessage(0, IPS_KERNELMESSAGE);
