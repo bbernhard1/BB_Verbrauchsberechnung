@@ -1,0 +1,12 @@
+{
+    "id": "{96C1DF11-8E25-2552-BEFB-E09ED0F66E9A}",
+    "name": "Verbrauchsberechnung",
+    "type": 3,
+    "vendor": "",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "VBR",
+    "url": ""
+}
