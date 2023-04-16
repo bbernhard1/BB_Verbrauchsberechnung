@@ -1,5 +1,4 @@
-# Verbrauchsberechnung
-Beschreibung des Moduls.
+# VerbrauchZeitspanne
 
 ### Inhaltsverzeichnis
 
@@ -13,55 +12,59 @@ Beschreibung des Moduls.
 
 ### 1. Funktionsumfang
 
-*
+* Berechnet für eine Zeitspanne den Verbrauch anhand der Aggregation der ausgewählten Quellvariable.
+* Bei Änderung der Zeitspanne wird der Verbrauch neu ermittelt
+* Verschiedene Detailgerade für Start- und End-Datum
+* Einstellbares Intervall für die Aktualisierung der Berechnung
 
 ### 2. Voraussetzungen
 
-- IP-Symcon ab Version 5.5
+- IP-Symcon ab Version 4.2
 
 ### 3. Software-Installation
 
-* Über den Module Store das 'Verbrauchsberechnung'-Modul installieren.
-* Alternativ über das Module Control folgende URL hinzufügen
+* Über den Module Store das Modul Verbrauch in Zeitspanne installieren.
+* Alternativ über das Module Control folgende URL hinzufügen:
+`https://github.com/symcon/VerbrauchZeitspanne`  
 
 ### 4. Einrichten der Instanzen in IP-Symcon
 
- Unter 'Instanz hinzufügen' kann das 'Verbrauchsberechnung'-Modul mithilfe des Schnellfilters gefunden werden.  
-	- Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
+- Unter "Instanz hinzufügen" kann das 'Verbrauch in Zeitspanne'-Modul mithilfe des Schnellfilters gefunden werden.
+    - Weitere Informationen zum Hinzufügen von Instanzen in der [Dokumentation der Instanzen](https://www.symcon.de/service/dokumentation/konzepte/instanzen/#Instanz_hinzufügen)
 
 __Konfigurationsseite__:
 
-Name     | Beschreibung
--------- | ------------------
-         |
-         |
+Name                               | Beschreibung
+---------------------------------- | ---------------------------------
+Quelle                             | Quellvariable, die für Verbrauch genutzt werden soll
+Detailgrad                         | Legt fest wie genau der Start- und Endzeitpunkt festgelegt werden kann (Datum, Uhrzeit, Datum/Uhrzeit)
+Intervall zum Aktualisieren nutzen | Wenn aktiv, wird ein Intervall zum Aktualisieren der Berechnung genutzt
+Intervall                          | Das Intervall in Minuten, in dem die Berechnung aktualisiert wird
 
 ### 5. Statusvariablen und Profile
 
 Die Statusvariablen/Kategorien werden automatisch angelegt. Das Löschen einzelner kann zu Fehlfunktionen führen.
 
-#### Statusvariablen
+##### Statusvariablen
 
-Name   | Typ     | Beschreibung
------- | ------- | ------------
-       |         |
-       |         |
+Name        | Typ     | Beschreibung
+----------- | ------- | ----------------
+Start       | Integer | Start-Datum/Start-Zeit für den Verbrauch (Sekunden werden nicht beachtet)
+Ende        | Integer | End-Datum/End-Zeit für den Verbrauch (Sekunden werden nicht beachtet)
+Verbrauch   | Float   | Verbrauch zwischen Start- und End-Datum
 
-#### Profile
+##### Profile
 
-Name   | Typ
------- | -------
-       |
-       |
+Es werden keine zusätzlichen Profile hinzugefügt.
 
 ### 6. WebFront
 
-Die Funktionalität, die das Modul im WebFront bietet.
+Über das WebFront werden die Variablen angezeigt. Es ist keine weitere Steuerung oder gesonderte Darstellung integriert.
 
 ### 7. PHP-Befehlsreferenz
 
-`boolean VBR_BeispielFunktion(integer $InstanzID);`
-Erklärung der Funktion.
-
-Beispiel:
-`VBR_BeispielFunktion(12345);`
+`boolean VIZ_Calculate(integer $InstanzID);`  
+Berechnet den Verbrauch zwischen Start- und End-Datum neu.
+Die Funktion liefert keinerlei Rückgabewert.  
+Beispiel:  
+`VIZ_Calculate(12345);`
